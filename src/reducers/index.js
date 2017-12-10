@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import  imagelist  from './imagelist';
+import  galleriesList  from './gallerieslist';
 
 export default combineReducers({
-    imagelist,
+    galleriesList,
 });

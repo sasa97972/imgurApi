@@ -1,21 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { AppContainer } from 'react-hot-loader';
+import {composeWithDevTools} from "redux-devtools-extension"
+import thunk from "redux-thunk"
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import App from './app.jsx';
-
-import reducers from "./reducers"
+import Container from "./components/mainLayout.jsx";
+import GalleriesList from './components/galleriesList.jsx';
+import GalleryView from './components/galleryView.jsx';
+import reducers from "./reducers";
 
 import './css/normalize.css';
+import "./css/framework.css";
 
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
     <AppContainer>
         <Provider store={store}>
-            <App/>
+            <Router>
+                <Container>
+                    <Route exact path="/" component={GalleriesList} />
+                    <Route path="/gallery/:galleryId" component={GalleryView} />
+                </Container>
+            </Router>
         </Provider>
     </AppContainer>,
     document.querySelector('.root')
