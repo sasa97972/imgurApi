@@ -1,0 +1,13 @@
+.post {
+    padding: 10px;
+}
+
+.post__image-container {
+
+}
+
+.post__image {
+    display: block;
+    width: 100%;
+    height: auto;
+}

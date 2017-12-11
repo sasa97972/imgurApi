@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
-import {asyncGetGalleries} from "../actions/galleries";
+import {withRouter, Link} from 'react-router-dom';
 
 class GalleryView extends Component {
     constructor(props) {
@@ -11,7 +10,11 @@ class GalleryView extends Component {
     render() {
         const {gallery} = this.props;
         return(
-            <h1>{gallery.title}</h1>
+            <div>
+                <Link to="/">Home</Link>
+                <h1>{gallery.title}</h1>
+            </div>
+
         );
     }
 }

@@ -1,4 +1,4 @@
-export const asyncGetGalleries = (params={page:"0", section:"hot", sort:"viral", window:"day"}) => dispatch => {
+export const asyncGetGalleries = (params) => dispatch => {
     const url = `https://api.imgur.com/3/gallery/${params.section}/${params.sort}/${params.window}/${params.page}?album_previews=true`;
 
     let settings = {
