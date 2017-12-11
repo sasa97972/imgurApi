@@ -26,7 +26,8 @@ class GalleriesList extends Component
     }
 
     infinityScroll() {
-        if(document.documentElement.clientHeight + window.pageYOffset >= document.documentElement.scrollHeight) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if(document.documentElement.clientHeight + scrollTop >= document.documentElement.scrollHeight) {
             let count = this.state.page + 1;
             this.props.changeFilter("page", count);
             this.setState({page: count, load: true})
@@ -36,7 +37,7 @@ class GalleriesList extends Component
     onFilterChange(event) {
         const select = event.target;
         const option = select.options[select.selectedIndex];
-        this.props.changeFilter(select.name, option.value)();
+        this.props.changeFilter(select.name, option.value);
         this.props.changeFilter("page", 0);
         this.setState({page: 0});
         if(select.name === "section") {
