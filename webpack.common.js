@@ -8,7 +8,7 @@ module.exports = {
     },
     output: {
         filename: 'index.js',
-        path: '/Front-end/React/dist'
+        path: '/Front-end/Frontend module 5/imgurApi/dist'
     },
     module: {
         rules: [

@@ -1,9 +1,8 @@
-export const changeFilter = (name, value) => dispatch => {
+export const changeFilter = (params) => dispatch => {
     dispatch({
         type: "CHANGE_FILTER",
         payload: {
-            name,
-            value
+            params
         }
     });
 };

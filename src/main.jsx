@@ -10,10 +10,12 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Container from "./components/mainLayout.jsx";
 import GalleriesList from './components/galleriesList.jsx';
 import GalleryView from './components/galleryView.jsx';
+import ButtonUp from './components/buttonUp.jsx';
 import reducers from "./reducers";
 
 import './css/normalize.css';
 import "./css/framework.css";
+import './css/app.css';
 
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -22,6 +24,7 @@ ReactDOM.render(
         <Provider store={store}>
             <Router>
                 <Container>
+                    <ButtonUp/>
                     <Route exact path="/" component={GalleriesList} />
                     <Route path="/gallery/:galleryId" component={GalleryView} />
                 </Container>

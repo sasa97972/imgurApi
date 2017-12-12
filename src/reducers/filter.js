@@ -7,9 +7,7 @@ export default function galleriesFilter(state = {
 {
     switch (action.type) {
         case "CHANGE_FILTER":
-            return Object.assign({}, state, {
-                [action.payload.name]: action.payload.value,
-            });
+            return Object.assign({}, state, action.payload.params);
     }
     return state;
 }
