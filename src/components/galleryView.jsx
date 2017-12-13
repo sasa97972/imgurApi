@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {withRouter, Link} from 'react-router-dom';
 
-import {asyncComments} from '../actions/comments'
+import {asyncComments} from '../actions/comments';
+import {GalleryInfo} from './galleryInfo.jsx';
+import {GalleryBody} from './galleryBody.jsx';
+import GalleryComments from './comments.jsx';
+
+import "../css/gallery.css"
 
 class GalleryView extends Component {
     constructor(props) {
@@ -18,13 +23,20 @@ class GalleryView extends Component {
     }
 
     render() {
-        const {gallery} = this.props;
+        const {gallery, comments} = this.props;
+        console.log(comments);
         return(
-            <div>
-                <Link to="/">Home</Link>
-                <h1>{gallery.title}</h1>
-            </div>
+            <div className="row">
+                <div className="col-md-12"><Link className="gallery__home-link" to="/">Home</Link></div>
+                <div className="col-md-8">
+                    <GalleryBody gallery={gallery}/>
+                    <GalleryComments comments={comments}/>
+                </div>
+                <div className="col-md-4">
+                    <GalleryInfo gallery={gallery}/>
+                </div>
 
+            </div>
         );
     }
 }

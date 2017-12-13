@@ -65,17 +65,19 @@ class GalleriesList extends Component
             currentNextPage = this.state.currentPage + this.state.perPage;
             this.setState({listEnd: false});
         }
-        this.state.useFilter ?
-                this.setState({
-                    list: [...props.list.slice(this.state.currentPage, this.state.currentPage + this.state.perPage)],
-                    currentPage: currentNextPage,
-                    useFilter: false
-                })
-            :
-                this.setState({
-                    list: [...this.state.list, ...props.list.slice(this.state.currentPage, this.state.currentPage + this.state.perPage)],
-                    currentPage: currentNextPage
-                });
+        if(this.state.useFilter) {
+            window.scrollTo(0,0);
+            this.setState({
+                list: [...props.list.slice(this.state.currentPage, this.state.currentPage + this.state.perPage)],
+                currentPage: currentNextPage,
+                useFilter: false
+            })
+        } else {
+            this.setState({
+                list: [...this.state.list, ...props.list.slice(this.state.currentPage, this.state.currentPage + this.state.perPage)],
+                currentPage: currentNextPage
+            });
+        }
     }
 
     componentWillReceiveProps(nextProps) {
