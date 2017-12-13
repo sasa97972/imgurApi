@@ -21,7 +21,7 @@ export default class  GalleryComments extends Component
                                     <p className="gallery-comment__info-text">Platform: {comment.platform}</p>
                                 </div>
                             </div>
-                            {comment.children &&
+                            {comment.children.length &&
                             <div className="gallery-comment__replies-container">
                                 <ShowRepliesButton count={comment.children.length} />
                                 <div className="gallery-comments gallery-comment__replies">
